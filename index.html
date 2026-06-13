@@ -8,16 +8,11 @@
     <meta name="author" content="Kanchan Rajwar, PhD">
     <title>Kanchan Rajwar, PhD | Academic Website</title>
     
-    <!-- Tailwind CSS + Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-        
-        :root {
-            --accent: #1e3a8a;
-        }
         
         body {
             font-family: 'Inter', system_ui, -apple-system, sans-serif;
@@ -41,7 +36,6 @@
             position: relative;
             transition: color 0.2s ease;
         }
-        
         .nav-link:after {
             content: '';
             position: absolute;
@@ -52,29 +46,14 @@
             background-color: #1e3a8a;
             transition: width 0.3s ease;
         }
-        
-        .nav-link:hover:after {
-            width: 100%;
-        }
+        .nav-link:hover:after { width: 100%; }
 
-        .academic-card {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                        border-color 0.2s ease;
-        }
-        
-        .academic-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 50px -12px rgb(15 23 42 / 0.08);
-        }
-
-        .pub-card {
+        .academic-card, .pub-card, .project-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .pub-card:hover {
-            border-color: #1e3a8a;
-            box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.05);
+        .academic-card:hover, .pub-card:hover, .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgb(15 23 42 / 0.08);
         }
 
         .interest-pill {
@@ -89,35 +68,17 @@
             align-items: center;
             gap: 0.4rem;
         }
-        
         .interest-pill:hover {
             background-color: #e0d1ff;
             transform: translateY(-1px);
         }
 
-        .project-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-4px);
-        }
-        
         .project-card::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
+            left: 0; top: 0; bottom: 0;
             width: 4px;
             background: linear-gradient(to bottom, #1e3a8a, #3b82f6);
-            transition: width 0.3s ease;
-        }
-        
-        .project-card:hover::before {
-            width: 5px;
         }
     </style>
 </head>
@@ -128,11 +89,11 @@
         <div class="max-w-screen-2xl mx-auto">
             <div class="px-8 py-5 flex items-center justify-between">
                 <div class="flex items-center gap-x-3">
-                    <div class="w-9 h-9 bg-[#1e3a8a] rounded-2xl flex items-center justify-center shadow-inner">
+                    <div class="w-9 h-9 bg-[#1e3a8a] rounded-2xl flex items-center justify-center">
                         <span class="text-white font-bold text-[21px] tracking-[-1.5px]">KR</span>
                     </div>
-                    <div class="flex flex-col">
-                        <span class="font-semibold text-[21px] tracking-[-0.5px] leading-none">Kanchan Rajwar</span>
+                    <div>
+                        <span class="font-semibold text-[21px] tracking-[-0.5px]">Kanchan Rajwar</span>
                         <span class="text-[10px] text-slate-500 tracking-[1.5px] font-medium">PhD</span>
                     </div>
                 </div>
@@ -146,48 +107,25 @@
                 </div>
                 
                 <div class="flex items-center gap-x-3">
-                    <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" 
-                       target="_blank"
-                       class="hidden md:inline-flex items-center gap-x-2.5 px-5 py-2 text-sm font-semibold border border-slate-300 hover:border-slate-400 hover:bg-white rounded-2xl transition-all active:scale-[0.985]">
+                    <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" target="_blank"
+                       class="hidden md:inline-flex items-center gap-x-2.5 px-5 py-2 text-sm font-semibold border border-slate-300 hover:bg-white rounded-2xl transition-all">
                         <i class="fa-brands fa-google-scholar text-[#1e3a8a]"></i>
-                        <span class="font-medium">Scholar</span>
+                        <span>Scholar</span>
                     </a>
                     
-                    <a href="#contact" 
-                       class="px-6 py-2.5 text-sm font-semibold bg-[#1e3a8a] hover:bg-[#172d6e] text-white rounded-2xl transition-all active:scale-[0.985] shadow-sm">
+                    <a href="#contact" class="px-6 py-2.5 text-sm font-semibold bg-[#1e3a8a] hover:bg-[#172d6e] text-white rounded-2xl transition-all">
                         Get in touch
                     </a>
-                    
-                    <button id="mobile-menu-btn"
-                            class="md:hidden w-11 h-11 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 active:bg-slate-200 rounded-2xl transition-colors">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
                 </div>
-            </div>
-        </div>
-        
-        <div id="mobile-menu" class="hidden md:hidden border-t bg-white px-6 py-4">
-            <div class="flex flex-col text-sm font-medium">
-                <a href="#about" class="px-5 py-3.5 text-slate-700 hover:bg-slate-50 rounded-2xl">About</a>
-                <a href="#research" class="px-5 py-3.5 text-slate-700 hover:bg-slate-50 rounded-2xl">Research</a>
-                <a href="#publications" class="px-5 py-3.5 text-slate-700 hover:bg-slate-50 rounded-2xl">Publications</a>
-                <a href="#experience" class="px-5 py-3.5 text-slate-700 hover:bg-slate-50 rounded-2xl">Experience</a>
-                <a href="#projects" class="px-5 py-3.5 text-slate-700 hover:bg-slate-50 rounded-2xl">Projects</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <header class="bg-white border-b border-slate-100">
         <div class="max-w-screen-2xl mx-auto px-8 pt-14 pb-16">
             <div class="grid lg:grid-cols-12 gap-x-8 gap-y-12 items-center">
-                
-                <div class="lg:col-span-7 xl:col-span-7">
-                    <div class="inline-flex items-center gap-x-2 px-4 h-8 rounded-3xl bg-[#1e3a8a] text-white text-xs font-semibold tracking-[1px] mb-8">
-                        <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-                        <span>FACULTY • NALANDA UNIVERSITY</span>
-                    </div>
-                    
+                <div class="lg:col-span-7">
                     <h1 class="heading-font text-[68px] lg:text-[76px] leading-[0.96] tracking-[-4.2px] font-semibold text-slate-950 mb-3">
                         Kanchan<br>Rajwar, PhD
                     </h1>
@@ -196,57 +134,39 @@
                     <p class="text-2xl text-slate-500 tracking-tight mb-9">Nalanda University, Rajgir</p>
                     
                     <div class="flex flex-wrap items-center gap-4 mb-10">
-                        <a href="#publications" 
-                           class="inline-flex items-center justify-center gap-x-3 px-9 h-14 rounded-3xl bg-slate-900 hover:bg-black text-white font-semibold text-[15px] transition-all active:scale-[0.985]">
+                        <a href="#publications" class="inline-flex items-center justify-center gap-x-3 px-9 h-14 rounded-3xl bg-slate-900 hover:bg-black text-white font-semibold text-[15px] transition-all">
                             Explore Research
                         </a>
-                        
                         <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" target="_blank"
-                           class="inline-flex items-center justify-center gap-x-3 px-8 h-14 rounded-3xl border border-slate-300 hover:bg-white font-semibold text-[15px] transition-all">
-                            <i class="fa-brands fa-google-scholar text-lg"></i>
+                           class="inline-flex items-center justify-center gap-x-3 px-8 h-14 rounded-3xl border border-slate-300 hover:bg-white font-semibold text-[15px]">
+                            <i class="fa-brands fa-google-scholar"></i>
                             <span>Google Scholar</span>
                         </a>
                     </div>
-                    
-                    <div class="flex items-center gap-x-3 text-sm text-slate-500">
-                        <div class="flex items-center gap-x-2">
-                            <i class="fa-solid fa-map-marker-alt text-[#1e3a8a]"></i>
-                            <span>Pretoria, South Africa → Nalanda, India</span>
-                        </div>
-                    </div>
                 </div>
                 
-                <div class="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end">
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
                     <div class="relative w-80 h-80 lg:w-[340px] lg:h-[340px]">
-                        <div class="w-full h-full rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl bg-slate-100">
-                            <div class="w-full h-full bg-gradient-to-br from-slate-200 via-slate-100 to-white flex items-center justify-center">
-                                <div class="text-center px-6">
-                                    <i class="fa-solid fa-user-graduate text-7xl text-slate-300 mb-4"></i>
-                                    <div>
-                                        <p class="text-xs tracking-[2px] text-slate-400 font-medium">PROFESSIONAL PHOTO</p>
-                                        <p class="text-[10px] text-slate-400 mt-1">800 × 800 px recommended</p>
-                                    </div>
-                                </div>
+                        <div class="w-full h-full rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl bg-slate-100 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fa-solid fa-user-graduate text-7xl text-slate-300 mb-4"></i>
+                                <p class="text-xs text-slate-400">Add your professional photo</p>
                             </div>
                         </div>
-                        <div class="absolute -inset-[6px] border border-[#1e3a8a]/10 rounded-[3.25rem] -z-10"></div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </header>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="max-w-screen-2xl mx-auto px-8 pt-20 pb-16">
         <div class="max-w-3xl">
             <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-4">INTRODUCTION</div>
             <h2 class="section-header mb-8">Bridging rigorous theory with practical impact in optimization and machine learning.</h2>
             
-            <div class="text-[15.5px] leading-relaxed text-slate-600 space-y-6">
-                <p>I am a researcher and faculty member whose work centers on <strong class="text-slate-800">evolutionary computation and metaheuristics</strong>, with a particular focus on understanding and mitigating structural bias in population-based algorithms. My research combines theoretical analysis with the development of practical frameworks that improve optimization performance across diverse problem domains.</p>
-                
-                <p>I am excited to contribute to the revival of <strong class="text-slate-800">Nalanda University</strong> as a global center of learning while pursuing research in optimization, transfer learning, and their applications in emerging areas such as dynamic graphs and non-stationary environments.</p>
+            <div class="text-[15.5px] leading-relaxed text-slate-600">
+                <p>I am a faculty member at Nalanda University working on evolutionary computation, metaheuristics, structural bias analysis, and transfer learning in optimization and machine learning.</p>
             </div>
         </div>
     </section>
@@ -254,22 +174,18 @@
     <!-- Research Interests -->
     <section id="research" class="bg-white border-y border-slate-100 py-16">
         <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-y-4 mb-10">
-                <div>
-                    <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-3">EXPERTISE</div>
-                    <h2 class="section-header">Research Interests</h2>
-                </div>
-            </div>
+            <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-4">EXPERTISE</div>
+            <h2 class="section-header mb-8">Research Interests</h2>
             
             <div class="flex flex-wrap gap-3">
                 <div class="interest-pill"><i class="fa-solid fa-dna"></i> Evolutionary Algorithms</div>
                 <div class="interest-pill"><i class="fa-solid fa-bug"></i> Swarm Intelligence</div>
                 <div class="interest-pill"><i class="fa-solid fa-balance-scale"></i> Structural Bias Analysis</div>
                 <div class="interest-pill"><i class="fa-solid fa-exchange-alt"></i> Transfer Learning</div>
+                <div class="interest-pill"><i class="fa-solid fa-robot"></i> Machine Learning</div>
+                <div class="interest-pill"><i class="fa-solid fa-brain"></i> Reinforcement Learning</div>
                 <div class="interest-pill"><i class="fa-solid fa-link"></i> Hybrid Metaheuristics</div>
-                <div class="interest-pill"><i class="fa-solid fa-robot"></i> Machine Learning Applications</div>
                 <div class="interest-pill"><i class="fa-solid fa-chart-line"></i> Optimization in Finance &amp; Agriculture</div>
-                <div class="interest-pill"><i class="fa-solid fa-project-diagram"></i> Dynamic Graphs &amp; EEG Analysis</div>
             </div>
         </div>
     </section>
@@ -281,69 +197,31 @@
                 <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-3">RESEARCH OUTPUT</div>
                 <h2 class="section-header">Selected Publications</h2>
             </div>
-            <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" target="_blank"
-               class="inline-flex items-center text-sm font-semibold text-[#1e3a8a] hover:text-[#172d6e]">
-                View complete list on Google Scholar <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
-            </a>
+            <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" target="_blank" class="text-sm font-semibold text-[#1e3a8a]">View full list on Google Scholar →</a>
         </div>
         
         <div class="grid gap-4">
-            <div class="pub-card academic-card border border-slate-200 bg-white rounded-3xl p-7 flex flex-col lg:flex-row lg:items-center gap-6">
-                <div class="flex-1">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <span class="px-4 py-1 text-xs font-medium bg-slate-100 text-slate-600 rounded-2xl">2023</span>
-                    </div>
-                    <h3 class="font-semibold text-[17px] leading-tight tracking-[-0.3px]">An exhaustive review of the metaheuristic algorithms for search and optimization: taxonomy, applications, and open challenges</h3>
-                    <p class="mt-2 text-sm text-slate-500">K. Rajwar, K. Deep, S. Das • <span class="italic">Artificial Intelligence Review</span></p>
+            <!-- Publications cards remain similar but cleaned -->
+            <div class="pub-card academic-card border border-slate-200 bg-white rounded-3xl p-7">
+                <div class="flex items-center gap-x-3 mb-2">
+                    <span class="px-3.5 py-1 text-xs font-medium bg-slate-100 text-slate-600 rounded-2xl">2023</span>
                 </div>
-                <div class="lg:ml-auto">
-                    <a href="https://doi.org/10.1007/s10462-023-10470-y" target="_blank" 
-                       class="inline-flex items-center px-6 py-3 text-sm font-semibold border border-slate-300 hover:bg-slate-50 rounded-2xl transition-colors">View Paper</a>
-                </div>
+                <h3 class="font-semibold text-[17px] leading-tight">An exhaustive review of the metaheuristic algorithms for search and optimization</h3>
+                <p class="text-sm text-slate-500 mt-1">K. Rajwar, K. Deep, S. Das • <span class="italic">Artificial Intelligence Review</span></p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="pub-card academic-card border border-slate-200 bg-white rounded-3xl p-6">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <span class="px-3.5 py-1 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-2xl">2026</span>
-                    </div>
-                    <h3 class="font-semibold leading-tight tracking-tight">Information Fusion in Smart Agriculture: Machine Learning Applications and Future Research Directions</h3>
-                    <p class="text-sm text-slate-500 mt-2">Katharria et al. • <span class="italic">Information Fusion</span></p>
+                    <span class="px-3.5 py-1 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-2xl">2026</span>
+                    <h3 class="font-semibold mt-2">Information Fusion in Smart Agriculture</h3>
+                    <p class="text-sm text-slate-500">Katharria et al. • Information Fusion</p>
                 </div>
-                
                 <div class="pub-card academic-card border border-slate-200 bg-white rounded-3xl p-6">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <span class="px-3.5 py-1 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-2xl">2025</span>
-                    </div>
-                    <h3 class="font-semibold leading-tight tracking-tight">Structural bias in metaheuristic algorithms: Insights, open problems, and future prospects</h3>
-                    <p class="text-sm text-slate-500 mt-2">K. Rajwar, K. Deep • <span class="italic">Swarm and Evolutionary Computation</span></p>
-                </div>
-                
-                <div class="pub-card academic-card border border-slate-200 bg-white rounded-3xl p-6">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <span class="px-3.5 py-1 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-2xl">2024</span>
-                    </div>
-                    <h3 class="font-semibold leading-tight tracking-tight">Uncovering structural bias in population-based optimization algorithms using the Generalized Signature Test</h3>
-                    <p class="text-sm text-slate-500 mt-2">K. Rajwar, K. Deep • <span class="italic">Expert Systems with Applications</span></p>
-                </div>
-                
-                <div class="pub-card academic-card border border-slate-200 bg-white rounded-3xl p-6">
-                    <div class="flex items-center gap-x-3 mb-3">
-                        <span class="px-3.5 py-1 text-xs font-bold bg-amber-100 text-amber-700 rounded-2xl">Best Paper Award</span>
-                        <span class="px-3.5 py-1 text-xs font-medium bg-slate-100 text-slate-600 rounded-2xl">2026</span>
-                    </div>
-                    <h3 class="font-semibold leading-tight tracking-tight">PITL-PSO: A Transfer Learning Framework for Particle Swarm Optimization in Continuous Domains</h3>
-                    <p class="text-sm text-slate-500 mt-2">K. Rajwar, N. Pillay, T. Nyathi</p>
+                    <span class="px-3.5 py-1 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-2xl">2025</span>
+                    <h3 class="font-semibold mt-2">Structural bias in metaheuristic algorithms</h3>
+                    <p class="text-sm text-slate-500">K. Rajwar, K. Deep • Swarm and Evolutionary Computation</p>
                 </div>
             </div>
-        </div>
-        
-        <div class="mt-8 text-center">
-            <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" target="_blank"
-               class="inline-flex items-center text-sm font-semibold px-7 py-3.5 rounded-3xl border border-slate-300 hover:bg-white transition-colors">
-                View all publications on Google Scholar
-                <i class="fa-solid fa-arrow-right ml-2.5 text-xs"></i>
-            </a>
         </div>
     </section>
 
@@ -357,57 +235,29 @@
         <div class="max-w-3xl space-y-9">
             <div class="flex gap-x-6">
                 <div class="w-3 h-3 mt-2 rounded-full bg-[#1e3a8a] flex-shrink-0 ring-4 ring-indigo-100"></div>
-                <div class="flex-1 -mt-1">
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-y-1">
-                        <div>
-                            <span class="font-semibold text-xl tracking-tight">Faculty</span>
-                            <span class="block text-slate-500">Nalanda University, Rajgir, Bihar</span>
-                        </div>
-                        <div class="text-sm font-medium text-emerald-600 bg-emerald-50 px-4 py-1 rounded-2xl w-fit">June 2026 – Present</div>
+                <div>
+                    <div class="flex items-baseline gap-x-3">
+                        <span class="font-semibold text-xl">Faculty</span>
+                        <span class="text-sm font-medium text-emerald-600 bg-emerald-50 px-4 py-1 rounded-2xl">July 2026 – Present</span>
                     </div>
-                    <p class="mt-3 text-[15px] text-slate-600">Faculty position in Mathematics. Teaching and research in optimization and related areas.</p>
+                    <span class="block text-slate-500">Nalanda University, Rajgir, Bihar</span>
+                    <p class="mt-2 text-[15px] text-slate-600">Faculty position in Mathematics with focus on teaching and research in optimization.</p>
                 </div>
             </div>
             
             <div class="flex gap-x-6">
                 <div class="w-3 h-3 mt-2 rounded-full bg-slate-400 flex-shrink-0 ring-4 ring-slate-100"></div>
-                <div class="flex-1 -mt-1">
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-y-1">
-                        <div>
-                            <span class="font-semibold text-xl tracking-tight">Postdoctoral Fellow</span>
-                            <span class="block text-slate-500">Department of Computer Science, University of Pretoria</span>
-                        </div>
-                        <div class="text-sm font-medium text-slate-500 bg-slate-100 px-4 py-1 rounded-2xl w-fit">April 2025 – June 2026</div>
-                    </div>
-                    <p class="mt-3 text-[15px] text-slate-600">Research in Evolutionary Transfer Learning.</p>
+                <div>
+                    <span class="font-semibold text-xl">Postdoctoral Fellow</span>
+                    <span class="block text-slate-500">University of Pretoria • April 2025 – June 2026</span>
                 </div>
             </div>
             
             <div class="flex gap-x-6">
                 <div class="w-3 h-3 mt-2 rounded-full bg-slate-400 flex-shrink-0 ring-4 ring-slate-100"></div>
-                <div class="flex-1 -mt-1">
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-y-1">
-                        <div>
-                            <span class="font-semibold text-xl tracking-tight">Postdoctoral Fellow</span>
-                            <span class="block text-slate-500">SQC &amp; OR Unit, Indian Statistical Institute</span>
-                        </div>
-                        <div class="text-sm font-medium text-slate-500 bg-slate-100 px-4 py-1 rounded-2xl w-fit">July 2024 – March 2025</div>
-                    </div>
-                    <p class="mt-3 text-[15px] text-slate-600">Research on Polynomial Multi-Objective Optimization problems.</p>
-                </div>
-            </div>
-            
-            <div class="flex gap-x-6">
-                <div class="w-3 h-3 mt-2 rounded-full bg-slate-400 flex-shrink-0 ring-4 ring-slate-100"></div>
-                <div class="flex-1 -mt-1">
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-y-1">
-                        <div>
-                            <span class="font-semibold text-xl tracking-tight">Research Intern</span>
-                            <span class="block text-slate-500">Department of Management Studies, IISc Bangalore</span>
-                        </div>
-                        <div class="text-sm font-medium text-slate-500 bg-slate-100 px-4 py-1 rounded-2xl w-fit">May – July 2023</div>
-                    </div>
-                    <p class="mt-3 text-[15px] text-slate-600">Awarded Prof. Ravi Ravindran &amp; Operational Research Society of India Research Award 2023.</p>
+                <div>
+                    <span class="font-semibold text-xl">Postdoctoral Fellow</span>
+                    <span class="block text-slate-500">Indian Statistical Institute • July 2024 – March 2025</span>
                 </div>
             </div>
         </div>
@@ -416,98 +266,17 @@
     <!-- Projects -->
     <section id="projects" class="bg-white border-y border-slate-100 py-20">
         <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="max-w-2xl mb-10">
-                <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-4">CURRENT WORK</div>
-                <h2 class="section-header">Key Projects &amp; Initiatives</h2>
-            </div>
+            <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-4">CURRENT WORK</div>
+            <h2 class="section-header mb-8">Key Projects</h2>
             
             <div class="grid md:grid-cols-2 gap-5">
                 <div class="project-card academic-card border border-slate-200 bg-white rounded-3xl p-8">
-                    <div class="flex items-start gap-x-4">
-                        <div class="w-11 h-11 bg-[#1e3a8a] text-white rounded-2xl flex-shrink-0 flex items-center justify-center">
-                            <i class="fa-solid fa-balance-scale text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-semibold text-xl tracking-tight mb-3">Mitigating Structural Bias in Metaheuristics</h3>
-                            <p class="text-[15px] text-slate-600 leading-relaxed">Theoretical and empirical framework using the Generalized Signature Test and BIAS toolbox to detect and correct structural bias in evolutionary and swarm algorithms.</p>
-                            <div class="mt-5 text-xs font-medium text-[#1e3a8a]">Information Sciences • Swarm &amp; Evolutionary Computation • ESWA</div>
-                        </div>
-                    </div>
+                    <h3 class="font-semibold text-xl mb-3">Mitigating Structural Bias in Metaheuristics</h3>
+                    <p class="text-slate-600">Theoretical and empirical work on detecting and correcting structural bias using the Generalized Signature Test.</p>
                 </div>
-                
                 <div class="project-card academic-card border border-slate-200 bg-white rounded-3xl p-8">
-                    <div class="flex items-start gap-x-4">
-                        <div class="w-11 h-11 bg-emerald-600 text-white rounded-2xl flex-shrink-0 flex items-center justify-center">
-                            <i class="fa-solid fa-exchange-alt text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-semibold text-xl tracking-tight mb-3">Problem-Independent Transfer Learning</h3>
-                            <p class="text-[15px] text-slate-600 leading-relaxed">Novel frameworks (PITL-DE, PNKL-DE, PITL-PSO) enabling knowledge transfer across optimization problems without problem-specific tuning. Recognized with Best Paper Award.</p>
-                            <div class="mt-5 text-xs font-medium text-emerald-600">EvoApps 2026 • CEC 2026 • Best Paper Award</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card academic-card border border-slate-200 bg-white rounded-3xl p-8">
-                    <div class="flex items-start gap-x-4">
-                        <div class="w-11 h-11 bg-amber-600 text-white rounded-2xl flex-shrink-0 flex items-center justify-center">
-                            <i class="fa-solid fa-book text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-semibold text-xl tracking-tight mb-3">Strong Benchmark Functions Textbook</h3>
-                            <p class="text-[15px] text-slate-600 leading-relaxed">Comprehensive textbook project covering statistical analysis of benchmark suites, common pitfalls in algorithm comparison, transformations, and best practices for reproducible research.</p>
-                            <div class="mt-5 text-xs font-medium text-amber-600">In preparation • Springer Nature interest</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card academic-card border border-slate-200 bg-white rounded-3xl p-8">
-                    <div class="flex items-start gap-x-4">
-                        <div class="w-11 h-11 bg-violet-600 text-white rounded-2xl flex-shrink-0 flex items-center justify-center">
-                            <i class="fa-solid fa-project-diagram text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-semibold text-xl tracking-tight mb-3">RAGMO-Net: Regime-Aware Graph Memory Networks</h3>
-                            <p class="text-[15px] text-slate-600 leading-relaxed">NeurIPS 2026 work on memory-augmented graph neural networks for non-stationary dynamic graphs and EEG analysis.</p>
-                            <div class="mt-5 text-xs font-medium text-violet-600">NeurIPS 2026 • Under revision</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education + Collaborators -->
-    <section class="max-w-screen-2xl mx-auto px-8 py-16">
-        <div class="grid lg:grid-cols-2 gap-x-16 gap-y-14">
-            <div>
-                <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-5">EDUCATION</div>
-                <div class="space-y-6">
-                    <div>
-                        <div class="font-semibold text-lg tracking-tight">Ph.D. in Operations Research</div>
-                        <div class="text-slate-500">Indian Institute of Technology Roorkee • September 2024</div>
-                    </div>
-                    <div>
-                        <div class="font-semibold text-lg tracking-tight">Postgraduate Studies</div>
-                        <div class="text-slate-500">Visva-Bharati University, Santiniketan</div>
-                    </div>
-                    <div>
-                        <div class="font-semibold text-lg tracking-tight">Project Fellow</div>
-                        <div class="text-slate-500">Indian Statistical Institute, Hyderabad</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <div class="uppercase text-xs font-bold tracking-[2.5px] text-[#1e3a8a] mb-5">SELECTED COLLABORATORS</div>
-                <div class="text-[15px] leading-relaxed text-slate-600 grid grid-cols-1 gap-y-1.5">
-                    <div>Prof. Kusum Deep — IIT Roorkee</div>
-                    <div>Prof. Swagatam Das — Indian Statistical Institute</div>
-                    <div>Prof. Millie Pant — IIT Roorkee</div>
-                    <div>Dr. Nelishia Pillay &amp; Dr. T. Nyathi — University of Pretoria</div>
-                    <div>Prof. Juan D. Velásquez — University of Chile</div>
-                    <div>Prof. Václav Snášel — VSB-TUO, Czech Republic</div>
-                    <div>Prof. Sung-Bae Cho — Yonsei University, Korea</div>
+                    <h3 class="font-semibold text-xl mb-3">Transfer Learning in Evolutionary Algorithms</h3>
+                    <p class="text-slate-600">PITL-DE, PNKL-DE, and PITL-PSO frameworks for knowledge transfer across optimization problems.</p>
                 </div>
             </div>
         </div>
@@ -515,98 +284,34 @@
 
     <!-- Contact -->
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 pt-8 pb-14">
-        <div class="bg-[#0f172a] text-white rounded-[2.75rem] px-10 lg:px-14 py-14">
-            <div class="max-w-2xl">
-                <h2 class="text-5xl font-semibold tracking-[-1.5px] leading-none mb-5">Open to meaningful collaborations.</h2>
-                <p class="text-xl text-slate-300">I welcome opportunities for joint research, student supervision, and academic partnerships.</p>
-                
-                <div class="mt-10 grid sm:grid-cols-2 gap-y-8 text-sm">
-                    <div>
-                        <div class="uppercase tracking-[1.5px] text-xs text-slate-400 mb-2">EMAIL</div>
-                        <a href="mailto:krajwar@ma.iitr.ac.in" class="font-medium text-lg hover:underline">krajwar@ma.iitr.ac.in</a>
-                    </div>
-                    <div>
-                        <div class="uppercase tracking-[1.5px] text-xs text-slate-400 mb-2">PHONE</div>
-                        <a href="tel:+918006627019" class="font-medium text-lg hover:underline">+91 80066 27019</a>
-                    </div>
-                </div>
-                
-                <div class="mt-9 flex flex-wrap gap-3">
-                    <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" target="_blank"
-                       class="inline-flex items-center gap-x-3 px-6 py-3 bg-white/10 hover:bg-white/15 rounded-2xl text-sm font-medium transition-colors">
-                        <i class="fa-brands fa-google-scholar"></i>
-                        <span>Google Scholar</span>
-                    </a>
-                    <a href="https://za.linkedin.com/in/kanchan-rajwar" target="_blank"
-                       class="inline-flex items-center gap-x-3 px-6 py-3 bg-white/10 hover:bg-white/15 rounded-2xl text-sm font-medium transition-colors">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
+        <div class="bg-slate-800 text-white rounded-[2.75rem] px-10 lg:px-14 py-14">
+            <h2 class="text-5xl font-semibold tracking-[-1.5px] mb-4">Open to meaningful collaborations.</h2>
+            <p class="text-xl text-slate-300 mb-8">I welcome opportunities for joint research, student supervision, and academic partnerships.</p>
+            
+            <div class="flex flex-wrap gap-3">
+                <a href="https://scholar.google.com/citations?user=lK_MEWUAAAAJ" target="_blank" class="px-6 py-3 bg-white/10 hover:bg-white/15 rounded-2xl text-sm font-medium">Google Scholar</a>
+                <a href="https://za.linkedin.com/in/kanchan-rajwar" target="_blank" class="px-6 py-3 bg-white/10 hover:bg-white/15 rounded-2xl text-sm font-medium">LinkedIn</a>
             </div>
         </div>
     </section>
 
-    <footer class="border-t border-slate-100 py-9 text-center text-xs text-slate-400">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            © 2026 Kanchan Rajwar, PhD. All rights reserved.<br>
-            <span class="text-[10px]">Hosted on GitHub Pages • Last updated June 2026</span>
-        </div>
+    <footer class="text-center py-8 text-xs text-slate-400">
+        © 2026 Kanchan Rajwar, PhD • Hosted on GitHub Pages
     </footer>
 
     <script>
-        function initNavbar() {
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 30) {
-                    navbar.classList.add('shadow-sm');
-                } else {
-                    navbar.classList.remove('shadow-sm');
-                }
+        // Simple dynamic effect
+        document.querySelectorAll('.academic-card, .pub-card, .project-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.03) 0%, transparent 60%)`;
             });
-        }
-        
-        function initMobileMenu() {
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            if (!btn || !menu) return;
-            
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-                const icon = btn.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
+            card.addEventListener('mouseleave', () => {
+                card.style.background = '';
             });
-            
-            menu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                    btn.querySelector('i').classList.remove('fa-times');
-                    btn.querySelector('i').classList.add('fa-bars');
-                });
-            });
-        }
-        
-        function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        e.preventDefault();
-                        const offsetPosition = target.getBoundingClientRect().top + window.scrollY - 85;
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                });
-            });
-        }
-        
-        function init() {
-            initNavbar();
-            initMobileMenu();
-            initSmoothScroll();
-        }
-        
-        window.onload = init;
+        });
     </script>
 </body>
 </html>
